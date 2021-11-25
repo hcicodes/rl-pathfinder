@@ -15,7 +15,21 @@ public class Helpers {
             System.out.println();
 
             for (int k = 0; k < array[i].length; k++) {
-                System.out.print(array[i][k] + " ");
+                //System.out.print(array[i][k] + " ");
+                //System.out.printf("%04d ", array[i][k]);
+                int val = array[i][k];
+                if (val > 0)
+                {
+                    System.out.printf("░░");
+                }
+                if (val < 0 && val > -50)
+                {
+                    System.out.printf("▒▒");
+                }
+                if (val < - 50)
+                {
+                    System.out.printf("▓▓");
+                }
             }
         }
 
@@ -26,6 +40,32 @@ public class Helpers {
         for (int i = 0; i < shortestPath.size(); i++) {
             System.out.printf("\nstep %s\n", i);
             System.out.println(shortestPath.get(i));
+        }
+
+        int outArr[][] = new int[10][10];
+        //
+        for (int i = 0; i < shortestPath.size(); i++)
+        {
+            Position pathPos = shortestPath.get(i);
+            int x = pathPos.getRow();
+            int y = pathPos.getCol();
+            outArr[x][y] = i + 1;
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (outArr[10 - i - 1][j] == 0)
+                {
+                    System.out.printf("░░");
+                }
+                else
+                {
+                    System.out.printf("%02d", outArr[10 - i - 1][j]);
+                }
+            }
+            System.out.printf("\n");
         }
     }
 
